@@ -35,7 +35,7 @@ func main() {
 	var fileNames, args []string
 	fileNames = os.Args[2:]
 	for i, s := range fileNames {
-		if strings.HasSuffix(s, ".go") {
+		if !strings.HasSuffix(s, ".go") {
 			argStart := i
 			if s == "--" {
 				argStart++
@@ -59,6 +59,9 @@ func main() {
 }
 
 func Run(fileNames, args []string) error {
+	if len(fileNames) == 0 {
+		return fmt.Errorf(".go files not specified")
+	}
 	parentDir := filepath.Dir(fileNames[0])
 	fset := token.NewFileSet()
 	files := make([]*ast.File, len(fileNames))
