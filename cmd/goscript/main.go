@@ -18,7 +18,7 @@ import (
 )
 
 func usage() {
-	fmt.Fprintln(os.Stderr, "usage: goscript run <go files> <args>")
+	fmt.Fprintln(os.Stderr, "usage: goscript run <.go files> [--] [args]")
 	os.Exit(1)
 }
 
